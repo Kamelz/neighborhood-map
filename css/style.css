@@ -1,0 +1,14 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#map {
+    height: 100%;
+}
+nav {
+    border-radius: 0px!important;
+}
+.nav-row {
+    max-height: 0px!important;
+}
