@@ -2,7 +2,7 @@
 A simple google map web application.
 
 ## Requirements
-- This application requires * php version <= 5.6 *.
+- This application requires php version <= 5.6.
 
 ## Install
 - Download repo zip file
