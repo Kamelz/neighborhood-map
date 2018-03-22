@@ -1,48 +1,41 @@
-     // Create a map variable
-     var map;
-     // Function to initialize the map within the map div
-     function initMap() {
-         map = new google.maps.Map(document.getElementById('map'), {
-             center: {
-                 lat: 40.74135,
-                 lng: -73.99802
-             },
-             zoom: 14
-         });
-         // Create a single latLng literal object.
-         var singleLatLng = {
-             lat: 40.74135,
-             lng: -73.99802
-         };
-         // Create a single marker appearing on initialize -
-         var marker = new google.maps.Marker({
-             position: singleLatLng,
-             title: "title",
-             animation: google.maps.Animation.DROP,
-             id: 0,
-             map: map
-         });
-         // Create it with the position of the singleLatLng,
-         // on the map, and give it your own title!
-         // create a single infowindow, with your own content.
-         var largeInfowindow = new google.maps.InfoWindow();
-         // It must appear on the marker
-         //  create an EVENT LISTENER so that the infowindow opens when
-         marker.addListener('click', function() {
-             populateInfoWindow(this, largeInfowindow);
-         });
-         // the marker is clicked!
-     }
 
-     function populateInfoWindow(marker, infowindow) {
-         // Check to make sure the infowindow is not already opened on this marker.
-         if (infowindow.marker != marker) {
-             infowindow.marker = marker;
-             infowindow.setContent('<div>' + marker.title + '</div>');
-             infowindow.open(map, marker);
-             // Make sure the marker property is cleared if the infowindow is closed.
-             infowindow.addListener('closeclick', function() {
-                 infowindow.marker = null;
-             });
-         }
-     }
+var MapViewModel = function (){
+    var self = this;
+
+    self.map =  new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: 40.74135,
+            lng: -73.99802
+        },
+        zoom: 5
+    });
+
+    self.locations = ko.observableArray(
+        [
+            {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
+            {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
+            {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
+            {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
+            {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
+            {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
+        ]
+    ); 
+    self.markers = new Marker(self);
+}
+
+var Marker = function(data){
+    for(var i=0; i<data.locations().length; ++i ){
+        this.marker = new google.maps.Marker({
+            position: data.locations()[i].location,
+            title: data.locations()[i].title,
+            animation: google.maps.Animation.DROP,
+            id: i,
+            map: data.map
+        });
+    } 
+}
+
+function initMap() {
+
+    ko.applyBindings(new MapViewModel());
+}

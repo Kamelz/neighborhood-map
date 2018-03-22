@@ -12,10 +12,18 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li>
-            <a href = "#"> TODO add filter</a>
-          </li>
+          <div class="row">
+
+          <div class="col-xs-12">
+            <input type="text" class="form-input">
+          </div>
+
+          <div class="col-xs-12">
+            <button class="btn btn-primary">Filter</button>
+          </div>
+          
           <li>
-            <a href = "#"> TODO add location</a>
+            <a href ="#"> TODO add location</a>
           </li>
         </ul>
       </div>
@@ -41,6 +49,7 @@
       </div>
       <!-- /#page-content-wrapper -->
     </div>
+    <script src="js/knockout-3.4.2.js"></script>
     <script src="js/script.js"></script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu40_ra6_cEk6HjhIjUSeLzLBJU-rzl_c&callback=initMap">
