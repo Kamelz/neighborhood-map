@@ -49,6 +49,11 @@
       </div>
       <!-- /#page-content-wrapper -->
     </div>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
     <script src="js/knockout-3.4.2.js"></script>
     <script src="js/script.js"></script>
     <script async defer
