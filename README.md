@@ -1,13 +1,13 @@
 # neighborhood-map
 A simple google map web application.
 
-## Requirements
-- This application requires php version <= 5.6.
+## Features
+- Live filtering of the map locations
+- Show information of the location in an infowindow by clicking the pin.
+- Show only certin location by clicking on it's name in the side list.
+- Show all the locations by clicking on `Show all`.
 
-## Install
-- Download repo zip file
-- or you can clone if you have `git` installed on your machine.
-
-## Usage
-- Open terminal  in project root directory.
-- run  ` php -S localhost:8000 `  and here you go. 
+##About 
+- Google maps API is used to display the map and the markers.
+- Konckout js framework to handle the client-side functions like filtering.
+- Foursquare API to get information about the location

@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/simple-sidebar.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <title>
+            Neighborhood Map
+        </title>
+    </head>
+    <body>
+        <div class="toggled" id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <input class="filter-box" data-bind="textInput: $root.filteration, valueUpdate: 'afterkeydown'" placeholder="Filter locations" type="text"/>
+                <ul class="locations" data-bind="foreach: locations()">
+                    <li data-bind="click: handleSelectLocationEvent">
+                        <a data-bind="text: title" href="#">
+                        </a>
+                    </li>
+                    <li data-bind="if: $index() === initlocations.length - 1">
+                        <a data-bind="click: showAll" href="#" style="font-weight:bold;">
+                            Show all
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper" style="padding:0px;">
+                <div class="container">
+                    <div class="row nav-row">
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#">
+                                        Neighborhood Map
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" id="map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js">
+        </script>
+        <script src="js/knockout-3.4.2.js">
+        </script>
+        <script src="js/script.js">
+        </script>
+        <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu40_ra6_cEk6HjhIjUSeLzLBJU-rzl_c&callback=initMap">
+        </script>
+    </body>
+</html>

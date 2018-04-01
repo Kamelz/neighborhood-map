@@ -12,3 +12,22 @@ nav {
 .nav-row {
     max-height: 0px!important;
 }
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+.locations li {
+    font-size: 17px;
+    padding-bottom: 5%;
+    padding-left: 2%;
+}
+.locations li a {
+    color: #9d9d9d;
+}
+.filter-box {
+    margin-bottom: 10%;
+    width: 100%;
+}
+a {
+    text-decoration: none!important;
+}
