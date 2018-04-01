@@ -1,5 +1,5 @@
 # neighborhood-map
-A simple google map web application.
+A simple map web application.
 
 ## Features
 - Live filtering of the map locations
