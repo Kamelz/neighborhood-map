@@ -135,3 +135,6 @@ var initMapFlag = false;
 function initMap() {
     ko.applyBindings(new MapViewModel());
 }
+var googleError = function (){
+    alert("Error occurred while loading the map.");
+}
