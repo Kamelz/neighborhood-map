@@ -29,6 +29,8 @@ var initlocations = [{
         lng: -73.983374
     }
 }];
+var map = null;
+var infowindow = null;
 var MapViewModel = function() {
     var self = this;
     this.map = new google.maps.Map(document.getElementById('map'), {
@@ -38,6 +40,7 @@ var MapViewModel = function() {
         },
         zoom: 12
     });
+    map = this.map;
     this.filteration = ko.observable('');
     this.locations = ko.observableArray(initlocations);
     this.locations = ko.computed(function() {
@@ -62,6 +65,7 @@ var MapViewModel = function() {
         showAll();
         for (var i = 0; i < allMarkers.length; ++i) {
             if (allMarkers[i].title == event.title) {
+                populateInfoWindow(allMarkers[i], map)
                 continue;
             }
             allMarkers[i].setVisible(false);
@@ -78,7 +82,12 @@ var MapViewModel = function() {
 }
 var allMarkers = [];
 
-function populateInfoWindow(marker, infowindow, map) {
+function populateInfoWindow(marker, map) {
+    if (infowindow) {
+        infowindow.setMarker = null;
+        infowindow.close();
+    }
+    infowindow = new google.maps.InfoWindow();
     var query = 'client_id=HDPRHIXFSR5RYFE02NNVKXNE1ZT2TRLVAHSNNCLM2CYXWTQF' + '&client_secret=24TAVHUZCOMPECNDSTHOLIU3OISIYX0FPOHKJNKY25KAAFMW' + '&v=20170801' + '&ll=' + marker.position.lat() + ',' + marker.position.lng() + '&query=' + marker.title + '&limit=1';
     var foursquareAPI = 'https://api.foursquare.com/v2/venues/search?' + query;
     $.getJSON(foursquareAPI).done(function(data) {
@@ -117,9 +126,8 @@ var Marker = function(locations, map) {
             map: map
         });
         allMarkers.push(this.marker);
-        infowindow = new google.maps.InfoWindow();
         this.marker.addListener('click', function() {
-            populateInfoWindow(this, infowindow, map)
+            populateInfoWindow(this, map)
         });
     }
     initMapFlag = true;
@@ -135,6 +143,6 @@ var initMapFlag = false;
 function initMap() {
     ko.applyBindings(new MapViewModel());
 }
-var googleError = function (){
+var googleError = function() {
     alert("Error occurred while loading the map.");
 }

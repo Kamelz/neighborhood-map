@@ -4,7 +4,8 @@ html, body {
     padding: 0;
 }
 #map {
-    height: 100%;
+width:100%;
+        min-height:600px;
 }
 nav {
     border-radius: 0px!important;
@@ -31,3 +32,4 @@ ul {
 a {
     text-decoration: none!important;
 }
+
